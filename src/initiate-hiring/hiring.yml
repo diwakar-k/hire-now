@@ -1,0 +1,15 @@
+addTechPannel:
+  handler: src/initiate-hiring/hiring.post
+  events:
+   - httpApi:
+        method: post
+        path: /start-hire
+        
+  versionFunctions: false
+  name: startHiring
+  package:
+    include:
+      - src/initiate-hiring/hiring.py
+  environment:
+    TABLE_NAME: ${self:custom.tablename.studentsTable}
+  
