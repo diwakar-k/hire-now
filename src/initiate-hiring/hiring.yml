@@ -13,3 +13,32 @@ addTechPannel:
   environment:
     TABLE_NAME: ${self:custom.tablename.studentsTable}
   
+listTechPannel:
+  handler: src/initiate-hiring/list.get
+  events:
+   - httpApi:
+        method: get
+        path: /items
+        
+  versionFunctions: false
+  name: list_item
+  package:
+    include:
+      - src/initiate-hiring/list.py
+  environment:
+    TABLE_NAME: ${self:custom.tablename.studentsTable}
+
+getTechPannel:
+  handler: src/initiate-hiring/get.get_item
+  events:
+   - httpApi:
+        method: get
+        path: /item/{job_id}
+        
+  versionFunctions: false
+  name: get_item
+  package:
+    include:
+      - src/initiate-hiring/get.py
+  environment:
+    TABLE_NAME: ${self:custom.tablename.studentsTable}
